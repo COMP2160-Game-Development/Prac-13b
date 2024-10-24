@@ -10,21 +10,22 @@ public class Creature : MonoBehaviour
     private InputAction mouseMovement;
     [SerializeField] private Vector3 mousePos;
 
-    //Appearance
-    [SerializeField] private Color creatureColour = Color.magenta;
-    [SerializeField] private float size = 1f;
-
     //Movement
     [SerializeField] private float moveSpeed = 5;
     [SerializeField] private float turnSpeed = 5;
     [SerializeField] private float distanceFromTarget = 1;
 
-    
+    private Camera cam;
 
     void Awake()
     {
         playerActions = new PlayerActions();
         mouseMovement = playerActions.Movement.MouseMovement;
+    }
+
+    void Start()
+    {
+        cam = Camera.main;
     }
 
     void OnEnable()
@@ -37,25 +38,22 @@ public class Creature : MonoBehaviour
         mouseMovement.Disable();
     }
 
-    // Update is called once per frame
+    private Vector3 toMouse = new Vector3();
+    private Vector3 direction = new Vector3();
+
     void Update()
     {
-        mousePos = Camera.main.ScreenToWorldPoint(new Vector3(mouseMovement.ReadValue<Vector2>().x, mouseMovement.ReadValue<Vector2>().y,
-            Camera.main.farClipPlane));
+        mousePos = cam.ScreenToWorldPoint(new Vector3(mouseMovement.ReadValue<Vector2>().x, mouseMovement.ReadValue<Vector2>().y,
+            cam.farClipPlane));
         mousePos.z = 0;
-        Vector3 toMouse = mousePos - transform.position;
-        Vector3 direction = Vector3.Normalize(toMouse);
+
+        toMouse = mousePos - transform.position;
+        direction = Vector3.Normalize(toMouse);
         if (toMouse.magnitude > distanceFromTarget)
         {
             transform.Translate(transform.TransformDirection(Vector3.up) * moveSpeed * Time.deltaTime);
             float dotProduct = Vector3.Dot(transform.TransformDirection(-Vector3.right), direction);
             transform.Rotate(transform.forward * turnSpeed * dotProduct * Time.deltaTime);
         }
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = creatureColour;
-        Gizmos.DrawSphere(transform.position, size);
     }
 }

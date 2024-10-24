@@ -4,7 +4,7 @@
 A reminder to please take a moment to complete the LETs and LEUs for this unit. This feedback is really important, and we need to reach a certain number of participants for us to see any of it. Please, if you have the time, fill them out.
 
 ## Today's Task
-Today you will be implementing a basic forom of procedural animation, creating a snake-like creature entirely in code. This is a somewhat advanced practical which draws on understandings of Vectors, Encapsulation and Abstraction to create an animated creature. It is designed for those interested in the kinds of procedural animation you might find in games like Rain World. You can play a sample solution [here](https://uncanny-machines.itch.io/comp2160-week-13a-prac).
+Today you will be implementing a basic forom of procedural animation, creating a snake-like creature entirely in code. This is a somewhat advanced practical which draws on understandings of Vectors, Encapsulation and Abstraction to create an animated creature. It is designed for those interested in the kinds of procedural animation you might find in games like Rain World. You can play a sample solution [here](https://uncanny-machines.itch.io/comp2160-prac-week-13b).
 
 Note: This is one of two "bonus pracs" you can complete in Week 13. You can only recieve marks for one of them. If you have already completed 12 practials, you will not receive any marks for this prac.
 
@@ -82,4 +82,3 @@ Hint: the line thickness is the hardest part of this. Remember that an Animation
 
 ## Step 5 - More advanced forms (20 min)
 This was a very basic introduction to procedural animation, with our worm-like creature really only having one "rule" (distance between bones). By introducing more rules and different joints/bones, you can create more interesting creatures. If you have some time left, make some notes or try out some different approaches to create something new!
-
